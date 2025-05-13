@@ -1,7 +1,7 @@
 # Zerotwo-MD
 
 <p align="center">
-<img src="https://i.imgur.com/8fK4h6F.jpg" alt="Zerotwo" width="500"/>
+<img src="https://imgur.com/a/PEJ4FYU" alt="Zerotwo" width="500"/>
 </p>
 
 <p align="center">
