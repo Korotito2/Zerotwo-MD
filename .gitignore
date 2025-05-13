@@ -1,24 +1,51 @@
-# Compiled class file
-*.class
+# Node modules
+node_modules/
 
-# Log file
+# Auth info sessions
+auth_info_sessions/
+
+# Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# BlueJ files
-*.ctxt
+# Environment variables
+.env
+.env.test
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# Temporal files
+tmp/
+temp/
+.tmp/
+.temp/
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
+# Database
+database/*.json
+
+# Media
+media/received/
+media/user/
+
+# Session
+session.json
+*.session.json
+
+# Misc
+.DS_Store
+Thumbs.db
+desktop.ini
 *.zip
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# Editor directories
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
