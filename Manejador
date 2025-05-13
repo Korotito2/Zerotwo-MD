@@ -1,0 +1,26 @@
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const pluginsFolder = path.join(__dirname, '../plugins')
+
+export default async function commandHandler(chatUpdate) {
+  try {
+    const m = chatUpdate.messages[0]
+    if (!m) return
+    if (m.key && m.key.remoteJid === 'status@broadcast') return
+    
+    const body = (m.message?.conversation) ? m.message.conversation :
+      (m.message?.imageMessage?.caption) ? m.message.imageMessage.caption :
+      (m.message?.videoMessage?.caption) ? m.message.videoMessage.caption :
+      (m.message?.extendedTextMessage?.text) ? m.message.extendedTextMessage.text :
+      (m.message?.buttonsResponseMessage?.selectedButtonId) ? m.message.buttonsResponseMessage.selectedButtonId :
+      (m.message?.listResponseMessage?.singleSelectReply?.selectedRowId) ? m.message.listResponseMessage.singleSelectReply.selectedRowId : ''
+    
+    const prefix = /^[°•π÷×¶∆£¢€¥®™✓_=|~!?#$%^&.+-,\/\\©^]/.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™✓_=|~!?#$%^&.+-,\/\\©^]/gi) : '/'
+    
+    const isCmd = body.startsWith(prefix)
+    const command = isCmd ? body.slice(prefix.length).trim().split(' ')[0].toLowerCase() : ''
+    const args = body.trim().split(/ +/).slice(1)
